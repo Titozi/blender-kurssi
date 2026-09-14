@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://j86aweof4wfe"]
+
+[ext_resource type="Texture2D" uid="uid://b7d4qw2w2syps" path="res://toposcope_sunset_1k.exr" id="1_ig7tw"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gnew5"]
+panorama = ExtResource("1_ig7tw")
+
+[sub_resource type="Sky" id="Sky_mdyoi"]
+sky_material = SubResource("PanoramaSkyMaterial_gnew5")
+
+[sub_resource type="Environment" id="Environment_o4qfh"]
+background_mode = 2
+sky = SubResource("Sky_mdyoi")
+
+[node name="Node3D" type="Node3D" unique_id=104935560]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1666612284]
+environment = SubResource("Environment_o4qfh")
