@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://j86aweof4wfe"]
 
-[ext_resource type="Texture2D" uid="uid://b7d4qw2w2syps" path="res://toposcope_sunset_1k.exr" id="1_ig7tw"]
+[ext_resource type="Shader" uid="uid://duv7rt3jvkghv" path="res://water.gdshader" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://caqyqbfse5thb" path="res://toposcope_sunset_2k.exr" id="1_lquwl"]
+[ext_resource type="Texture2D" uid="uid://wwxs7eu1hivm" path="res://water_normal_map.png" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://bp6l5qltv4sud" path="res://tfc_controller.gd" id="3_7mycd"]
+[ext_resource type="Script" uid="uid://cufplgudvka7j" path="res://browser_input_fixes.gd" id="4_272bh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gnew5"]
-panorama = ExtResource("1_ig7tw")
+panorama = ExtResource("1_lquwl")
 
 [sub_resource type="Sky" id="Sky_mdyoi"]
 sky_material = SubResource("PanoramaSkyMaterial_gnew5")
@@ -12,7 +16,29 @@ sky_material = SubResource("PanoramaSkyMaterial_gnew5")
 background_mode = 2
 sky = SubResource("Sky_mdyoi")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4qfh"]
+render_priority = 0
+shader = ExtResource("1_1bvp3")
+shader_parameter/water_color = Color(0, 0.35, 0.7, 1)
+shader_parameter/normal_map = ExtResource("2_lquwl")
+shader_parameter/wave_speed = 0.05
+shader_parameter/wave_height = 0.1
+shader_parameter/reflection_strength = 0.5
+shader_parameter/uv_tiling = 4.0
+
 [node name="Node3D" type="Node3D" unique_id=104935560]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1666612284]
 environment = SubResource("Environment_o4qfh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=475217518]
+size = Vector3(10, 1, 10)
+material = SubResource("ShaderMaterial_o4qfh")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1459127096]
+transform = Transform3D(0.77228606, 0, 0.63527495, 0, 1, 0, -0.63527495, 0, 0.77228606, -2.0045605, 3.2782247, 0)
+script = ExtResource("3_7mycd")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=193246410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881861, 0)
+script = ExtResource("4_272bh")
