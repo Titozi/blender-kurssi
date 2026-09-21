@@ -3,8 +3,15 @@
 [ext_resource type="Shader" uid="uid://duv7rt3jvkghv" path="res://water.gdshader" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://caqyqbfse5thb" path="res://toposcope_sunset_2k.exr" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://wwxs7eu1hivm" path="res://water_normal_map.png" id="2_lquwl"]
-[ext_resource type="Script" uid="uid://bp6l5qltv4sud" path="res://tfc_controller.gd" id="3_7mycd"]
 [ext_resource type="Script" uid="uid://cufplgudvka7j" path="res://browser_input_fixes.gd" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://4ak6wevqekhb" path="res://level.tscn" id="6_272bh"]
+[ext_resource type="Script" uid="uid://cjp3eexgidqof" path="res://game_manager.gd" id="7_efxa6"]
+[ext_resource type="PackedScene" uid="uid://drb304cowuwt2" path="res://Start.tscn" id="8_dg77c"]
+[ext_resource type="PackedScene" uid="uid://sm7y2xjyjfnq" path="res://Finish.tscn" id="9_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://b4bb0jixu7ulx" path="res://default_button.tscn" id="10_w48qg"]
+[ext_resource type="PackedScene" uid="uid://c07ogrfrhe50m" path="res://player_1.tscn" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://wjy7bcnst3am" path="res://default_box.tscn" id="11_vivmo"]
+[ext_resource type="Script" uid="uid://bjhrvo5tddjxg" path="res://misc.gd" id="12_dg77c"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gnew5"]
 panorama = ExtResource("1_lquwl")
@@ -32,13 +39,41 @@ shader_parameter/uv_tiling = 4.0
 environment = SubResource("Environment_o4qfh")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=475217518]
-size = Vector3(10, 1, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17183518, 0)
+size = Vector3(60, 1, 60)
 material = SubResource("ShaderMaterial_o4qfh")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1459127096]
-transform = Transform3D(0.77228606, 0, 0.63527495, 0, 1, 0, -0.63527495, 0, 0.77228606, -2.0045605, 3.2782247, 0)
-script = ExtResource("3_7mycd")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=193246410]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881861, 0)
+visible = false
 script = ExtResource("4_272bh")
+
+[node name="level" parent="." unique_id=1096770204 instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2319453, 0.85545826, -1.2040374)
+
+[node name="Node3D2" type="Node3D" parent="." unique_id=978455860]
+script = ExtResource("7_efxa6")
+
+[node name="Start" parent="." unique_id=203913321 instance=ExtResource("8_dg77c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5297194, 0.9486083, 0.07890952)
+
+[node name="Finish" parent="." unique_id=1898902293 instance=ExtResource("9_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.006302, 0.95325375, -2.28706)
+
+[node name="default_button" parent="." unique_id=555005832 instance=ExtResource("10_w48qg")]
+transform = Transform3D(0.8619189, 0, 0, 0, 0.15989852, 0, 0, 0, 0.8093473, -3.8561318, 0.99446595, 1.2751297)
+
+[node name="default_box" parent="." unique_id=2136560190 instance=ExtResource("11_vivmo")]
+transform = Transform3D(0.7122298, 0, 0, 0, 0.5370537, 0, 0, 0, 0.7527416, -1.7656066, 1.667402, 1.4670151)
+
+[node name="DebugLabel" type="Label" parent="." unique_id=46745684]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Player" parent="." unique_id=1110347924 instance=ExtResource("11_efxa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.7588849, -2)
+
+[node name="Node3D3" type="Node3D" parent="." unique_id=360707161 node_paths=PackedStringArray("player", "sea")]
+script = ExtResource("12_dg77c")
+player = NodePath("../Player")
+sea = NodePath("../CSGBox3D")

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b4bb0jixu7ulx"]
+
+[ext_resource type="PackedScene" uid="uid://4c1qwghxsjug" path="res://default_button.glb" id="1_wifv8"]
+[ext_resource type="Script" uid="uid://b80q1pm7y4fg1" path="res://button.gd" id="2_b7aoo"]
+
+[node name="default_button" unique_id=555005832 groups=["Buttons"] instance=ExtResource("1_wifv8")]
+script = ExtResource("2_b7aoo")

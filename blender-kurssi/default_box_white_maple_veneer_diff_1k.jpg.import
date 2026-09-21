@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dkt3hp2d020x3"
+path.s3tc="res://.godot/imported/default_box_white_maple_veneer_diff_1k.jpg-9de628c4419dcdd2e93773130a22b952.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "a22b3eb0c48b04ba768dfd86361beb0e"
+}
+
+[deps]
+
+source_file="res://default_box_white_maple_veneer_diff_1k.jpg"
+dest_files=["res://.godot/imported/default_box_white_maple_veneer_diff_1k.jpg-9de628c4419dcdd2e93773130a22b952.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

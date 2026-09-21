@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://wjy7bcnst3am"]
+
+[ext_resource type="PackedScene" uid="uid://dhkmcrec35o6v" path="res://default_box.glb" id="1_wkv2y"]
+
+[node name="default_box" unique_id=2136560190 groups=["Boxes"] instance=ExtResource("1_wkv2y")]
